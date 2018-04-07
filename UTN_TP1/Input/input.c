@@ -14,11 +14,9 @@
 */
 int getInt(int* input,char message[],char eMessage[], int lowLimit, int hiLimit)
 {
-    //.........
-    //.........
-    //.........
-    //.........
-
+	
+	int retorno = -1;
+		
 	do{
 		
 		printf(message);
@@ -27,12 +25,14 @@ int getInt(int* input,char message[],char eMessage[], int lowLimit, int hiLimit)
 			
 			printf(eMessage);
 		}
+		
+		retorno = 0;
+		
 	}while(*input < lowLimit || *input > hiLimit);
 	
-	
 
-    //*input = 44;
-    return 0;
+
+    return retorno;
 }
 
 /**
@@ -47,23 +47,24 @@ int getInt(int* input,char message[],char eMessage[], int lowLimit, int hiLimit)
 */
 int getFloat(float* input,char message[],char eMessage[], float lowLimit, float hiLimit)
 {
-    //.........
-    //.........
-    //.........
-    //.........
-    
-    do{
+
+	int retorno = -1;
+
+	do{
 		
 		printf(message);
 		scanf("%f",input);
 		if(*input < lowLimit || *input > hiLimit){
-			
+				
 			printf(eMessage);
 		}
+			
+		retorno = 0;
+		
 	}while(*input < lowLimit || *input > hiLimit);
-
-    //*input = 1234.88;
-    return 0;
+		
+    
+    return retorno;
 }
 
 
@@ -77,28 +78,26 @@ int getFloat(float* input,char message[],char eMessage[], float lowLimit, float 
 * \return Si obtuvo el caracter [0] si no [-1]
 *
 */
-int getChar(char* input,char message[],char eMessage[], char lowLimit, char hiLimit)
+int getChar(char* input,char message[],char eMessage[], char primerOpcion, char segundaOpcion, char terceraOpcion)
 {
-    //.........
-    //.........
-    //.........
-    //.........
-    
-    
-    
-    do{
+	
+	int retorno = -1;
+		
+	do{
     	
 		fflush(stdin);
 		printf(message);
 		scanf("%c",input);
-		if(*input < lowLimit || *input > hiLimit){
+		if(*input != primerOpcion && *input > segundaOpcion && *input != terceraOpcion){
 			
 			printf(eMessage);
 		}
-	}while(*input != lowLimit && *input > hiLimit && input != "b");
+		
+		retorno = 0;
+		
+	}while(*input != primerOpcion && *input > segundaOpcion && *input != terceraOpcion);
 
-    //*input = 'S';
-    return 0;
+    return retorno;
 }
 
 
@@ -114,12 +113,10 @@ int getChar(char* input,char message[],char eMessage[], char lowLimit, char hiLi
 */
 int getString(char* input,char message[],char eMessage[], int lowLimit, int hiLimit)
 {
-    //.........
-    //.........
-    //.........
-    //.........
     
-     do{
+    int retorno = -1;
+    
+    do{
 		fflush(stdin);	
 		printf(message);
 		scanf("%s",input);
@@ -127,9 +124,11 @@ int getString(char* input,char message[],char eMessage[], int lowLimit, int hiLi
 			
 			printf(eMessage);
 		}
+				
+		retorno = 0;
+		
 	}while(strlen(input) < lowLimit || strlen(input) > hiLimit);
+		
 
-
-    //strcpy(input,"Sheldon");
-    return 0;
+    return retorno;
 }

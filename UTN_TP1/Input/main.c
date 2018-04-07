@@ -19,19 +19,19 @@ int main()
 
 
     // EJEMPLO DE USO DE getFloat
-    r = getFloat(&precio,"Â¿Cual es el precio?: ","Rango valido [0 - 10000]\n",1,10000);
+    r = getFloat(&precio,"\n¿Cual es el precio?: ","Rango valido [0 - 10000]\n",1,10000);
     if(r == 0)
         printf("\nEl precio es: %0.2f\n",precio);
 
 
     // EJEMPLO DE USO DE getChar
-    r = getChar(&continuar,"Ingrese Opcion [A][B][C]: ","Solo [A][B][C]\n",'a','c');
+    r = getChar(&continuar,"\nIngrese Opcion [A][B][C]: ","Solo [A][B][C]\n",'a','b','c');
     if(r == 0)
         printf("\nContinuar: %c\n",continuar);
 
 
     // EJEMPLO DE USO DE getChar
-    r = getString(nombre,"Nombre: ","El largo debe ser entre 2 y 50\n", 2, 50);
+    r = getString(nombre,"\nNombre: ","El largo debe ser entre 2 y 50\n", 2, 50);
     if(r == 0)
         printf("\nNombre: %s\n",nombre);
 
