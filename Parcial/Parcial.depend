@@ -1,0 +1,51 @@
+# depslib dependency file v1.0
+1526598530 source:c:\users\alumno\desktop\parcial\parcial\aviso.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"aviso.h"
+	"utn.h"
+	"cliente.h"
+
+1526596484 c:\users\alumno\desktop\parcial\parcial\aviso.h
+
+1526596485 c:\users\alumno\desktop\parcial\parcial\utn.h
+
+1526596484 c:\users\alumno\desktop\parcial\parcial\cliente.h
+
+1526596484 source:c:\users\alumno\desktop\parcial\parcial\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"cliente.h"
+	"utn.h"
+	"aviso.h"
+
+1526600911 source:c:\users\alumno\desktop\parcial\parcial\informar.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+	"cliente.h"
+	"aviso.h"
+
+1526596485 source:c:\users\alumno\desktop\parcial\parcial\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1526601333 source:c:\users\alumno\desktop\parcial\parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"cliente.h"
+	"aviso.h"
+	"utn.h"
+	"informar.h"
+
+1526597194 c:\users\alumno\desktop\parcial\parcial\informar.h
+
