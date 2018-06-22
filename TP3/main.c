@@ -1,30 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "funciones.h"
 #include "utn.h"
 
 void mostrarPeliculas(EMovie* array[],int cantidad);
 void cargarPeliculas(EMovie** array,int *cantidad);
-void eliminarPelicula(EMovie* array[],int cantidad,char *pelicula);
+void eliminarPelicula(EMovie* array[],int *cantidad,char *pelicula);
 
 int main()
 {
-    char seguir='s';
-    int opcion=0;
+    //char seguir='s';
+    //int opcion=0;
 
     EMovie* pArrayPeliculas[5];
     int qtyActualArrayPeliculas = 0;
-    int qtyMaximaArrayPeliculas = 5;
+    //int qtyMaximaArrayPeliculas = 5;
 
     pArrayPeliculas[qtyActualArrayPeliculas] = movie_newParametros("inception","Ciencia Ficcion",3," 404 ",10," 404 ");
     qtyActualArrayPeliculas++;
-    pArrayPeliculas[qtyActualArrayPeliculas] = movie_newParametros("Baneros","Comedia",3," 404 ",10," 404 ");
+    pArrayPeliculas[qtyActualArrayPeliculas] = movie_newParametros("Banieros","Comedia",3," 404 ",10," 404 ");
     qtyActualArrayPeliculas++;
 
 
     //cargarPeliculas(pArrayPeliculas,&qtyActualArrayPeliculas);
-    eliminarPelicula(pArrayPeliculas,qtyActualArrayPeliculas,"inception");
+    eliminarPelicula(pArrayPeliculas,&qtyActualArrayPeliculas,"Banieros");
     mostrarPeliculas(pArrayPeliculas,qtyActualArrayPeliculas);
+    //printf("%d\n",qtyActualArrayPeliculas);
 
 
     /*while(seguir=='s')
@@ -112,27 +114,26 @@ void cargarPeliculas(EMovie* array[],int* cantidad){
     }
 }
 
-void eliminarPelicula(EMovie* array[],int cantidad,char *pelicula){
+void eliminarPelicula(EMovie* array[],int *cantidad,char *pelicula){
 
-    //char peliculaAeliminar[50];
     int i,j;
+    int comp;
 
     if(array != NULL){
 
-        for(i=0;i<cantidad;i++){
-            printf("\nindice:%d\n",i);
+        for(i=0;i<(*cantidad);i++){
+            comp = strcmp(pelicula,array[i]->titulo);
+            if(comp == 0){
+                printf("%s %s %d\n",array[i]->titulo,pelicula,i);
+                for(j=i;j<(*cantidad-1);j++){
 
-            if(strcmp(array[i]->titulo,pelicula) == 0/*array[i]->titulo == pelicula*/){
-                //printf("%s %s %d\n",array[i]->titulo,pelicula,i);
-
-                for(j=0;j<cantidad-1;j++){
-
-                    array[i] = array[i+1];
+                    array[j] = array[j+1];
                 }
-                cantidad = cantidad -1;
+                (*cantidad-1);
+                break;
             }
 
-            else if(i==cantidad-1){
+            else if(i==(*cantidad-1)){
                 printf("Pelicula no encontrada\n");
             }
 

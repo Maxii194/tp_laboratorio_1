@@ -26,3 +26,31 @@
 	"utn.h"
 	"funciones.h"
 
+1529674484 source:c:\users\alumno\desktop\tp3\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+	"funciones.h"
+
+1529674484 c:\users\alumno\desktop\tp3\utn.h
+
+1529674484 c:\users\alumno\desktop\tp3\funciones.h
+
+1529674484 source:c:\users\alumno\desktop\tp3\peliculas.c
+
+1529674484 source:c:\users\alumno\desktop\tp3\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1529676523 source:c:\users\alumno\desktop\tp3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"utn.h"
+
