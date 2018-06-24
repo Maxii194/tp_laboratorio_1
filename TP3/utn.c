@@ -161,6 +161,17 @@ int esAlfaNumerico(char str[])
    return 1;
 }
 
+int esAlfaNumericoSigno(char str[])
+{
+   int i=0;
+   while(str[i] != '\0')
+   {
+       if((str[i] != ' ') && (str[i] < 32 || str[i] > 127))
+           return 0;
+       i++;
+   }
+   return 1;
+}
 
 /**
  * \brief Verifica si el valor recibido contiene solo números, + y -
@@ -247,6 +258,31 @@ int getStringNumerosFlotantes(char mensaje[],char input[])
     char aux[256];
     getString(mensaje,aux);
     if(esNumericoFlotante(aux))
+    {
+        strcpy(input,aux);
+        return 1;
+    }
+    return 0;
+}
+
+
+int getStringAlfaNumerico(char mensaje[],char input[])
+{
+    char aux[256];
+    getString(mensaje,aux);
+    if(esAlfaNumerico(aux))
+    {
+        strcpy(input,aux);
+        return 1;
+    }
+    return 0;
+}
+
+int getStringAllCharacters(char mensaje[],char input[])
+{
+    char aux[256];
+    getString(mensaje,aux);
+    if(esAlfaNumericoSigno(aux))
     {
         strcpy(input,aux);
         return 1;
@@ -376,23 +412,75 @@ int getValidFloat(char requestMessage[],char errorMessage[], float* input,float 
 
 }
 
+int getValidAlfaNumerico(char requestMessage[],char errorMessage[], char errorMessageLenght[],char input[], int maxLenght,int attemps)
+{
+    int i;
+    int retorno=-1;
+    char buffer[1024];
+
+    for(i=0;i<attemps;i++)
+    {
+        if (!getStringAlfaNumerico(requestMessage,buffer))
+        {
+            printf ("%s",errorMessage);
+            continue;
+        }
+        if(strlen(buffer) >= maxLenght)
+        {
+            printf ("%s",errorMessageLenght);
+            continue;
+
+        }
+        retorno=0;
+        strcpy(input,buffer);
+        break;
+    }
+    return retorno;
+}
+
+int getValidStringAllCharacters(char requestMessage[],char errorMessage[], char errorMessageLenght[],char input[], int maxLenght,int attemps)
+{
+    int i;
+    int retorno=-1;
+    char buffer[1024];
+
+    for(i=0;i<attemps;i++)
+    {
+        if (!getStringAllCharacters(requestMessage,buffer))
+        {
+            printf ("%s",errorMessage);
+            continue;
+        }
+        if(strlen(buffer) >= maxLenght)
+        {
+            printf ("%s",errorMessageLenght);
+            continue;
+
+        }
+        retorno=0;
+        strcpy(input,buffer);
+        break;
+    }
+    return retorno;
+}
+
 int getOpcion(char* input,char message[],char eMessage[], char primerOpcion, char segundaOpcion)
 {
-	
+
 	int retorno = -1;
-		
+
 	do{
-    	
+
 		fflush(stdin);
 		printf(message);
 		scanf("%c",input);
 		if(*input != primerOpcion && *input > segundaOpcion){
-			
+
 			printf(eMessage);
 		}
-		
+
 		retorno = 0;
-		
+
 	}while(*input != primerOpcion && *input > segundaOpcion);
 
     return retorno;

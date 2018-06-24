@@ -1,24 +1,25 @@
 # depslib dependency file v1.0
-1529614194 source:c:\users\maxi\desktop\utn_tp1\tp3\main.c
+1529860061 source:c:\users\maxi\desktop\utn_tp1\tp3\main.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 	"funciones.h"
 	"utn.h"
 
-1529601674 c:\users\maxi\desktop\utn_tp1\tp3\funciones.h
+1529662300 c:\users\maxi\desktop\utn_tp1\tp3\funciones.h
 
-1529589640 source:c:\users\maxi\desktop\utn_tp1\tp3\peliculas.c
+1529662300 source:c:\users\maxi\desktop\utn_tp1\tp3\peliculas.c
 
-1526532156 source:c:\users\maxi\desktop\utn_tp1\tp3\utn.c
+1529860061 source:c:\users\maxi\desktop\utn_tp1\tp3\utn.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<string.h>
 	"utn.h"
 
-1526532156 c:\users\maxi\desktop\utn_tp1\tp3\utn.h
+1529860061 c:\users\maxi\desktop\utn_tp1\tp3\utn.h
 
-1529605026 source:c:\users\maxi\desktop\utn_tp1\tp3\funciones.c
+1529662300 source:c:\users\maxi\desktop\utn_tp1\tp3\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
