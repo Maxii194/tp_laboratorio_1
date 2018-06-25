@@ -3,147 +3,70 @@
 #include <string.h>
 #include "funciones.h"
 #include "utn.h"
+#define qtyMaximaArrayPeliculas 5
 
-void mostrarPeliculas(EMovie* array[],int cantidad);
-void cargarPeliculas(EMovie** array,int *cantidad);
-void eliminarPelicula(EMovie* array[],int *cantidad,char *pelicula);
 
 
 int main()
 {
-    //char seguir='s';
-    //int opcion=0;
+    int opcion;
+    char peliculaEliminar[50];
+    char peliculaGenerar[50];
+    int aux;
 
     EMovie* pArrayPeliculas[5];
     int qtyActualArrayPeliculas = 0;
-    //int qtyMaximaArrayPeliculas = 5;
 
-    pArrayPeliculas[qtyActualArrayPeliculas] = movie_newParametros("Inception","Ciencia Ficcion",3," 404 ",10," 404 ");
+    pArrayPeliculas[qtyActualArrayPeliculas] = movie_newParametros("Inception","Ciencia Ficcion",120,"Inception is a movie starring Leonardo DiCaprio, Joseph Gordon-Levitt, and Ellen Page. A thief, who steals corporate secrets through the use of dream-sharing technology, is given the inverse task of planting an idea into the mind of a CEO.",100,"https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UX182_CR0,0,182,268_AL_.jpg");
     qtyActualArrayPeliculas++;
-    pArrayPeliculas[qtyActualArrayPeliculas] = movie_newParametros("Banieros","Comedia",3," 404 ",10," 404 ");
+    /*pArrayPeliculas[qtyActualArrayPeliculas] = movie_newParametros("Banieros","Comedia",3," 404 ",10," 404 ");
+    qtyActualArrayPeliculas++;*/
+    pArrayPeliculas[qtyActualArrayPeliculas] = movie_newParametros("Titanic","Drama",200,"Titanic, American romantic adventure film, released in 1997, that centres on the sinking of the RMS Titanic. The film proved immensely popular, holding the all-time box-office gross record for more than a decade after its release.",100,"https://static.rogerebert.com/uploads/movie/movie_poster/titanic-1997/large_s2Z25JcBWS9tKAysSKuWyon5lwP.jpg");
     qtyActualArrayPeliculas++;
-    pArrayPeliculas[qtyActualArrayPeliculas] = movie_newParametros("Titanic","Drama",3," 404 ",10," 404 ");
-    qtyActualArrayPeliculas++;
-    pArrayPeliculas[qtyActualArrayPeliculas] = movie_newParametros("Taken","Accion",3," 404 ",10," 404 ");
-    qtyActualArrayPeliculas++;
+    /*pArrayPeliculas[qtyActualArrayPeliculas] = movie_newParametros("Taken","Accion",3," 404 ",10," 404 ");
+    qtyActualArrayPeliculas++;*/
 
 
-    cargarPeliculas(pArrayPeliculas,&qtyActualArrayPeliculas);
-    printf("%d\n",qtyActualArrayPeliculas);
-    eliminarPelicula(pArrayPeliculas,&qtyActualArrayPeliculas,"Banieros");
-    qtyActualArrayPeliculas--;
-    printf("%d\n",qtyActualArrayPeliculas);
-    mostrarPeliculas(pArrayPeliculas,qtyActualArrayPeliculas);
 
 
-    /*while(seguir=='s')
+
+    do
     {
-        printf("1- Agregar pelicula\n");
-        printf("2- Borrar pelicula\n");
-        printf("3- Generar pagina web\n");
-        printf("4- Salir\n");
-
-        scanf("%d",&opcion);
-
+        getValidInt("\n\n1.Agregar Pelicula\n2.Borrar Pelicula\n3.Generar Pelicula\n4.Salir\n","\nNo Valida",&opcion,1,4,1);
         switch(opcion)
         {
             case 1:
                 cargarPeliculas(pArrayPeliculas,&qtyActualArrayPeliculas);
                 break;
             case 2:
+                if(getValidAlfaNumerico("Titulo: ","Error\n","Overflow", peliculaEliminar,50,2)==0 && movie_buscarPelicula(pArrayPeliculas,qtyActualArrayPeliculas,peliculaEliminar)==0){
+
+                    eliminarPelicula(pArrayPeliculas,&qtyActualArrayPeliculas,peliculaEliminar);
+                    qtyActualArrayPeliculas--;
+                    printf("Pelicula Eliminada\n");
+                }
+                else{
+                   printf("Pelicula no Encontrada\n");
+                }
                 break;
             case 3:
-               break;
-            case 4:
-                seguir = 'n';
+                if(getValidAlfaNumerico("Titulo: ","Error\n","Overflow", peliculaGenerar,50,2)==0 && movie_buscarPelicula(pArrayPeliculas,qtyActualArrayPeliculas,peliculaGenerar)==0){
+
+                    aux = movie_buscarIndexPelicula(pArrayPeliculas,qtyActualArrayPeliculas,peliculaGenerar);
+                    strcat(peliculaGenerar,".html");
+                    generarPagina(pArrayPeliculas,qtyActualArrayPeliculas,aux,peliculaGenerar);
+                    printf("Archivo html generado\n");
+                     system("PAUSE");
+                }
+                else{
+                   printf("Pelicula no Encontrada\n");
+
+                }
                 break;
         }
-    }*/
+    }while(opcion!=4);
 
+    //mostrarPeliculas(pArrayPeliculas,qtyActualArrayPeliculas);
     return 0;
 }
 
-void mostrarPeliculas(EMovie* array[],int cantidad)
-{
-    int i;
-    char titulo[50];
-    char genero[50];
-    int duracion;
-    char descripcion[200];
-    int puntaje;
-    char linkImagen[200];
-
-    for(i=0 ; i<cantidad;i++)
-    {
-        if(array[i] != NULL){
-
-            movie_getTitulo(array[i],titulo);
-            movie_getGenero(array[i],genero);
-            movie_getDuracion(array[i],&duracion);
-            movie_getDescripcion(array[i],descripcion);
-            movie_getPuntaje(array[i],&puntaje);
-            movie_getLinkImagen(array[i],linkImagen);
-
-            printf("%s - %s - %d - %s - %d - %s - %d\n",titulo,genero,duracion,descripcion,puntaje,linkImagen,i);
-        }
-    }
-}
-
-void cargarPeliculas(EMovie* array[],int* cantidad){
-
-    char titulo[50];
-    char genero[50];
-    float duracion;
-    char descripcion[200];
-    int puntaje;
-    char linkImagen[200];
-
-    if((*cantidad) > 0 && array != NULL)
-    {
-        if(!getValidAlfaNumerico("Titulo: ","Error\n","Overflow", titulo,50,2))
-        {
-            if(!getValidString("Genero: ","Error\n","Overflow", genero,50,2))
-            {
-                if(!getValidFloat("Duracion: ","Error",&duracion,0,5,2))
-                {
-                    if(!getValidAlfaNumerico("Descripcion: ","Error\n","Overflow", descripcion,50,2))
-                    {
-                        if(!getValidInt("Puntaje: ","Error\n",&puntaje,0,10,2))
-                        {
-                            if(!getValidStringAllCharacters("Link de Imagen: ","Error\n","Overflow", linkImagen,50,2))
-                            {
-                                array[*cantidad] = movie_newParametros(titulo,genero,duracion,descripcion,puntaje,linkImagen);
-                                (*cantidad)++;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-void eliminarPelicula(EMovie* array[],int *cantidad,char *pelicula){
-
-    int i,j;
-    int comp;
-
-    if(array != NULL){
-
-        for(i=0;i<*cantidad;i++){
-            comp = strcmp(pelicula,array[i]->titulo);
-            if(comp == 0){
-                printf("%s %s %d\n",array[i]->titulo,pelicula,i);
-                array[i]= NULL;
-                for(j=i;j<*cantidad-1;j++){
-
-                    array[j] = array[j+1];
-                }
-                break;
-            }
-            else if(i==*cantidad-1){
-                printf("Pelicula no encontrada\n");
-            }
-        }
-    }
-}

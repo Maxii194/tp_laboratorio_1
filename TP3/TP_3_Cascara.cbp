@@ -37,6 +37,10 @@
 		<Unit filename="funciones.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="html.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="html.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

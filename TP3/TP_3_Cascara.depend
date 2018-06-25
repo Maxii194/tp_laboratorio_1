@@ -1,12 +1,12 @@
 # depslib dependency file v1.0
-1529860061 source:c:\users\maxi\desktop\utn_tp1\tp3\main.c
+1529904033 source:c:\users\maxi\desktop\utn_tp1\tp3\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"funciones.h"
 	"utn.h"
 
-1529662300 c:\users\maxi\desktop\utn_tp1\tp3\funciones.h
+1529902105 c:\users\maxi\desktop\utn_tp1\tp3\funciones.h
 
 1529662300 source:c:\users\maxi\desktop\utn_tp1\tp3\peliculas.c
 
@@ -19,13 +19,14 @@
 
 1529860061 c:\users\maxi\desktop\utn_tp1\tp3\utn.h
 
-1529662300 source:c:\users\maxi\desktop\utn_tp1\tp3\funciones.c
+1529903074 source:c:\users\maxi\desktop\utn_tp1\tp3\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<string.h>
 	"utn.h"
 	"funciones.h"
+	"html.h"
 
 1529674484 source:c:\users\alumno\desktop\tp3\funciones.c
 	<stdio.h>
@@ -54,4 +55,15 @@
 	<string.h>
 	"funciones.h"
 	"utn.h"
+
+1529898112 source:c:\users\maxi\desktop\utn_tp1\tp3\html.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+	"funciones.h"
+	"html.h"
+
+1529898015 c:\users\maxi\desktop\utn_tp1\tp3\html.h
 
